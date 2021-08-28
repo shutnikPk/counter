@@ -1,40 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const counterForm = () => {
-    return count === 0 ? "Zero" : count;
+const Counter = (props) => {
+  const formValue = () => {
+    return props.value === 0 ? "Zero" : props.value;
   };
 
-  const getBageClasses = () => {
+  const getBadgeClasses = () => {
     let classes = "badge m-2 bg-";
-    return (classes += count === 0 ? "danger" : "primary");
-  };
-
-  const handleIncriment = (productId) => {
-    setCount(count + 1);
-  };
-
-  const handleDicriment = (productId) => {
-    if (count === 0) return;
-    setCount(count - 1);
+    return (classes += props.value === 0 ? "danger" : "primary");
   };
 
   return (
     <>
-      <span className={getBageClasses()}>{counterForm()}</span>
-      <button
-        onClick={() => handleIncriment({ id: 1 })}
-        className="btn btn-secondary btn-sm"
-      >
+      <h6>{props.name}</h6>
+      <span className={getBadgeClasses()}>{formValue()}</span>
+      <button onClick={props.onIncriment} className="btn btn-secondary btn-sm">
         Increment
       </button>
-      <button
-        onClick={() => handleDicriment({ id: 1 })}
-        className="btn btn-secondary btn-sm"
-      >
+      <button onClick={props.onDicriment} className="btn btn-secondary btn-sm">
         Dicrement
+      </button>
+      <button onClick={props.onDelete} className="btn btn-danger btn-sm">
+        Delete
       </button>
     </>
   );

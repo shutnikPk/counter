@@ -6,10 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css"
 
 import Couonter from "./components/counter"
+import Couonters from "./components/counters"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Couonter />
+    <Couonters />
   </React.StrictMode>,
   document.getElementById('root')
 );
