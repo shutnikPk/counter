@@ -2,16 +2,14 @@ import React from "react";
 
 import Couonter from "./counter";
 
-const Counters = (props) => {
+const Counters = ({ counters, ...rest }) => {
   return (
     <div>
-      {props.counters.map((counter) => (
+      {counters.map((counter) => (
         <Couonter
           key={counter.id}
-          onDelete={props.onDelete}
-          onIncriment={props.onIncriment}
-          onDicriment={props.onDicriment}
           {...counter}
+          {...rest}
         />
       ))}
     </div>

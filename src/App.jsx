@@ -35,10 +35,12 @@ function App() {
     setCounters(newState);
   };
 
+  const goods = () => counters.reduce((a, c) => a + c.value, 0);
+
   return (
     <div className="col-lg-8 mx-auto p-3 py-md-5">
       <main>
-        <NavBar />
+        <NavBar amountGoods={goods()} />
         <Counters
           onDelete={handleDelete}
           onIncriment={handleIncriment}
