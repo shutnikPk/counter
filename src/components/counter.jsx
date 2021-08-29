@@ -14,13 +14,22 @@ const Counter = (props) => {
     <>
       <h6>{props.name}</h6>
       <span className={getBadgeClasses()}>{formValue()}</span>
-      <button onClick={props.onIncriment} className="btn btn-secondary btn-sm">
+      <button
+        onClick={() => props.onIncriment(props.id)}
+        className="btn btn-secondary btn-sm"
+      >
         Increment
       </button>
-      <button onClick={props.onDicriment} className="btn btn-secondary btn-sm">
+      <button
+        onClick={() => props.onDicriment(props.id)}
+        className="btn btn-secondary btn-sm"
+      >
         Dicrement
       </button>
-      <button onClick={props.onDelete} className="btn btn-danger btn-sm">
+      <button
+        onClick={() => props.onDelete(props.id)}
+        className="btn btn-danger btn-sm"
+      >
         Delete
       </button>
     </>

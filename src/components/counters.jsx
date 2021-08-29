@@ -1,50 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Couonter from "./counter";
 
-const Counters = () => {
-  const initialState = [
-    { value: 0, id: 1, name: "Banana" },
-    { value: 8, id: 2, name: "Aple" },
-    { value: 0, id: 3, name: "PineAple" },
-  ];
-  const [counters, setCounters] = useState(initialState);
-
-  const handleDelete = (deletedId) => {
-    const newState = counters.filter((e) => e.id !== deletedId);
-    setCounters(newState);
-  };
-
-  const handleIncriment = (productId) => {
-    const newState = counters.map((e) => {
-      if (e.id === productId) {
-        e.value++;
-      }
-      return e;
-    });
-    return setCounters(newState);
-  };
-
-  const handleDicriment = (productId) => {
-    const newState = counters.map((e) => {
-      if (e.id === productId) {
-        e.value === 0 ? (e.value = 0) : e.value--;
-      }
-      return e;
-    });
-    return setCounters(newState);
-  };
-
+const Counters = (props) => {
   return (
     <div>
-      {counters.map((e) => (
+      {props.counters.map((counter) => (
         <Couonter
-          key={e.id}
-          value={e.value}
-          name={e.name}
-          onDelete={() => handleDelete(e.id)}
-          onIncriment={() => handleIncriment(e.id)}
-          onDicriment={() => handleDicriment(e.id)}
+          key={counter.id}
+          onDelete={props.onDelete}
+          onIncriment={props.onIncriment}
+          onDicriment={props.onDicriment}
+          {...counter}
         />
       ))}
     </div>
